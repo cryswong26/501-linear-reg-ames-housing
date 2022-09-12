@@ -9,7 +9,7 @@ myheading1='Predicting Home Sale Prices in Ames, Iowa'
 image1='ames_welcome.jpeg'
 tabtitle = 'Ames Housing'
 sourceurl = 'http://jse.amstat.org/v19n3/decock.pdf'
-githublink = 'https://github.com/plotly-dash-apps/501-linear-reg-ames-housing'
+githublink = 'https://github.com/cryswong26/501-linear-reg-ames-housing'
 
 
 ########### Initiate the app
@@ -37,7 +37,14 @@ app.layout = html.Div(children=[
                 dcc.Input(id='SingleFam', value=0, type='number', min=0, max=1, step=1),
                 html.Div('Large Neighborhood:'),
                 dcc.Input(id='LargeNeighborhood', value=0, type='number', min=0, max=1, step=1),
-
+                html.Div('CentralAir:'), #removed the "new"
+                dcc.Input(id='CentralAir_New', value=0, type='number', min=0, max=1, step=1),
+                html.Div('Fireplaces:'), #removed the "new"
+                dcc.Input(id='Fireplaces', value=0, type='number', min=0, max=3, step=1),
+                html.Div('GarageCars:'), #removed the "new"
+                dcc.Input(id='GarageCars', value=0, type='number', min=0, max=4, step=1),
+                html.Div('GarageAttached:'), #removed the "new"
+                dcc.Input(id='GarageAttached', value=0, type='number', min=0, max=1, step=1),
             ], className='four columns'),
             html.Div([
                 html.Button(children='Submit', id='submit-val', n_clicks=0,
@@ -57,7 +64,7 @@ app.layout = html.Div(children=[
     html.Br(),
     html.Br(),
     html.H4('Regression Equation:'),
-    html.Div('Predicted Price = (- $1,360.5K Baseline) + ($0.7K * Year Built) + ($12.7K * Bathrooms) + (- $7.7K * Bedrooms) + ($0.049K * Total Square Feet) + ($ 25.2K * Single Family Home) + (- $6.6 K * Large Neighborhood)'),
+    html.Div('Predicted Price = (- $1,043.8K Baseline) + ($0.5K * Year Built) + ($9.8K * Bathrooms) + (- $5.4K * Bedrooms) + ($0.039K * Total Square Feet) + ($ 21.5K * Single Family Home) + (- $5.3 K * Large Neighborhood) + ($7.3K * CentralAir) + ($11.6K * Fireplaces) + ($19.2K * GarageCars) + (- $0.8K * GarageAttached) '),
     html.Br(),
     html.A('Google Spreadsheet', href='https://docs.google.com/spreadsheets/d/1q2ustRvY-GcmPO5NYudvsBEGNs5Na5p_8LMeS4oM35U/edit?usp=sharing'),
     html.Br(),
@@ -78,13 +85,17 @@ app.layout = html.Div(children=[
     State(component_id='TotalSF', component_property='value'),
     State(component_id='SingleFam', component_property='value'),
     State(component_id='LargeNeighborhood', component_property='value')
+    State(component_id='CentralAir', component_property='value')
+    State(component_id='Fireplaces', component_property='value')
+    State(component_id='GarageCars', component_property='value')
+    State(component_id='GarageAttached', component_property='value')
 
 )
-def ames_lr_function(clicks, YearBuilt,Bathrooms,BedroomAbvGr,TotalSF,SingleFam,LargeNeighborhood):
+def ames_lr_function(clicks, YearBuilt,Bathrooms,BedroomAbvGr,TotalSF,SingleFam,LargeNeighborhood,CentralAir_New,Fireplaces,GarageCars,GarageAttached):
     if clicks==0:
         return "waiting for inputs"
     else:
-        y = [-1360501.3809 + 704.4287*YearBuilt + 12738.4775*Bathrooms + -7783.1712*BedroomAbvGr + 49.824*TotalSF+ 25282.091*SingleFam+ -6637.2636*LargeNeighborhood]
+        y = [-1043815.6191 + 534.741*YearBuilt + 9021.8317*Bathrooms + -5410.0789*BedroomAbvGr + 39.4863*TotalSF+ 21538.1133*SingleFam+ -5348.3975*LargeNeighborhood + 7329.9815*CentralAir_New + 11622.5781*Fireplaces + 19168.3355*GarageCars + -789.182*GarageAttached]
         formatted_y = "${:,.2f}".format(y[0])
         return formatted_y
 
