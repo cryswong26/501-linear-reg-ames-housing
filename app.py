@@ -37,13 +37,13 @@ app.layout = html.Div(children=[
                 dcc.Input(id='SingleFam', value=0, type='number', min=0, max=1, step=1),
                 html.Div('Large Neighborhood:'),
                 dcc.Input(id='LargeNeighborhood', value=0, type='number', min=0, max=1, step=1),
-                html.Div('CentralAir:'), #removed the "new"
+                html.Div('CentralAir:'),
                 dcc.Input(id='CentralAir_New', value=0, type='number', min=0, max=1, step=1),
-                html.Div('Fireplaces:'), #removed the "new"
+                html.Div('Fireplaces:'), 
                 dcc.Input(id='Fireplaces', value=0, type='number', min=0, max=3, step=1),
-                html.Div('GarageCars:'), #removed the "new"
+                html.Div('GarageCars:'), 
                 dcc.Input(id='GarageCars', value=0, type='number', min=0, max=4, step=1),
-                html.Div('GarageAttached:'), #removed the "new"
+                html.Div('GarageAttached:'), 
                 dcc.Input(id='GarageAttached', value=0, type='number', min=0, max=1, step=1),
             ], className='four columns'),
             html.Div([
@@ -58,7 +58,7 @@ app.layout = html.Div(children=[
                 html.H3('Predicted Home Value:'),
                 html.Div(id='Results')
             ], className='four columns')
-        ], className='twelve columns',
+        ], className='sixteen columns',
     ),
     html.Br(),
     html.Br(),
