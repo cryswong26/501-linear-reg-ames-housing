@@ -85,7 +85,7 @@ app.layout = html.Div(children=[
     State(component_id='TotalSF', component_property='value'),
     State(component_id='SingleFam', component_property='value'),
     State(component_id='LargeNeighborhood', component_property='value'),
-    State(component_id='CentralAir', component_property='value'),
+    State(component_id='CentralAir_New', component_property='value'),
     State(component_id='Fireplaces', component_property='value'),
     State(component_id='GarageCars', component_property='value'),
     State(component_id='GarageAttached', component_property='value'),
