@@ -58,7 +58,7 @@ app.layout = html.Div(children=[
                 html.H3('Predicted Home Value:'),
                 html.Div(id='Results')
             ], className='four columns')
-        ], className='sixteen columns',
+        ], className='twelve columns',
     ),
     html.Br(),
     html.Br(),
